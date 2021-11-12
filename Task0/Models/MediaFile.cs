@@ -9,21 +9,24 @@ namespace Task0.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public double Size { get; set; }
+        private double Size { get; set; }
 
         public MediaFile()
         {
 
         }
 
-        public MediaFile(int Id, string Name, double Size)
+        public MediaFile(int id, string name, double size)
         {
-            this.Id = Id;
-            this.Name = Name;
-            this.Size = Size;
+            this.Id = id;
+            this.Name = name;
+            this.Size = size;
         }
 
-        public abstract void InformationAboutMediaFile();
+        public  virtual void InformationAboutMediaFile()
+        {
+            Console.Write($"Name:{Name} - Size:{Size} - ");
+        }
         public void Play()
         {
             InformationAboutMediaFile();

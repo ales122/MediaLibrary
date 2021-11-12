@@ -8,9 +8,9 @@ namespace Task0
     {
         static void Main(string[] args)
         {
-
-            IPlay playlist = new Playlist();
-            playlist.Play();
+            MediaPlayer mediaPlayer = new MediaPlayer();
+            mediaPlayer.MediaLibrary.AddPlaylist(new Playlist("best"));
+            mediaPlayer.Play(mediaPlayer.MediaLibrary.GetPlaylistByName("best"));
         }
     }
 }

@@ -19,7 +19,8 @@ namespace Task0.Models
 
         public override void InformationAboutMediaFile()
         {
-            Console.WriteLine($"Image with name - {Name}");
+            base.InformationAboutMediaFile();
+            Console.WriteLine($"Height:{Height} - Width:{Width}");
         }
     }
 }

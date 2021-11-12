@@ -9,7 +9,7 @@ namespace Task0.Models
     public class Playlist:IPlay
     {
         public string Name { get; set; }
-        public List<MediaFile>MediaFiles { get; set; }
+        private List<MediaFile>MediaFiles { get; set; }
 
         public Playlist()
         {
@@ -17,7 +17,16 @@ namespace Task0.Models
             this.MediaFiles = new List<MediaFile>();
         }
 
-
+        public Playlist(string name)
+        {
+            this.Name = name;
+            this.MediaFiles = new List<MediaFile>();
+        }
+        public Playlist(string name,List<MediaFile>mediaFiles)
+        {
+            this.Name = "untitled";
+            this.MediaFiles = new List<MediaFile>();
+        }
         public void AllAboutMedia()
         {
             int i = 1;
@@ -28,6 +37,10 @@ namespace Task0.Models
             }
         }
 
+        public MediaFile GetMediaFileById(int id)
+        {
+            return MediaFiles.FirstOrDefault(m => m.Id == id);
+        }
         public MediaFile FindMedia(MediaFile media)
         {
             return MediaFiles.Find(x => x.Id == media.Id);
@@ -48,11 +61,13 @@ namespace Task0.Models
 
         public void Play()
         {
-            Console.WriteLine("Playlist started...");
+            Console.WriteLine($"Playlist {Name} started...");
             for (int i = 0; i < MediaFiles.Count; i++)
             {
                 Console.WriteLine($"The {i+1} media playing!");
             }
+
+         
         }
     }
 }

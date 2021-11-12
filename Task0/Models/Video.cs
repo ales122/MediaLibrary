@@ -16,7 +16,8 @@ namespace Task0.Models
 
         public override void InformationAboutMediaFile()
         {
-            Console.WriteLine("Video!");
+            base.InformationAboutMediaFile();
+            Console.WriteLine($"Duration:{Duration} - Quality:{Quality}");
         }
     }
 }

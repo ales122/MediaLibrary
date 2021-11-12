@@ -7,6 +7,12 @@ namespace Task0.Models
 {
     public class MediaPlayer
     {
+        public MediaLibrary MediaLibrary { get; set; }
+
+        public MediaPlayer()
+        {
+            MediaLibrary = new MediaLibrary();
+        }
         public void Play(IPlay playable)
         {
 
@@ -16,7 +22,6 @@ namespace Task0.Models
             }
             playable.Play();
         }
-
 
 
     }

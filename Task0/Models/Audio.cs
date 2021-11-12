@@ -12,13 +12,14 @@ namespace Task0.Models
         public Audio
             (int id, string name, double size, string genre, string singer) : base(id, name, size)
         {
-
-            this.Genre = genre;
-            this.Singer = singer;
+            Genre = genre;
+            Singer = singer;
         }
+
         public override void InformationAboutMediaFile()
         {
-            Console.WriteLine($"This is Audio with name - {Name}");
+            base.InformationAboutMediaFile();
+            Console.WriteLine($"Genre:{Genre} - Singer:{Singer}");
         }
     }
 }

@@ -1,37 +1,43 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Task0.Models
 {
     public class MediaLibrary
     {
-        private MediaPlayer mediaPlayer;
-        public List<Playlist> playlists;
+        private List<Playlist> PlayLists { get; set; }
+        private List<MediaFile> MediaFiles { get; set; }
         public MediaLibrary()
         {
-            playlists = new List<Playlist>();
-            playlists.Add(new Playlist());
-            mediaPlayer = new MediaPlayer();
+            PlayLists = new List<Playlist>
+            {
+                new Playlist()
+            };
+            MediaFiles = new List<MediaFile>();
         }
         public void AddPlaylist(string name, List<MediaFile> mediaFiles)
         {
-            Playlist playlist = new Playlist();
+            Playlist playlist = new Playlist(name);
             playlist.AddMedia(mediaFiles);
-            playlists.Add(playlist);
+            PlayLists.Add(playlist);
         }
 
         public void AddPlaylist(Playlist playlist)
         {
-            playlists.Add(playlist);
+            PlayLists.Add(playlist);
         }
 
         public void RemovePlaylist(Playlist playlist)
         {
-            playlists.Remove(playlist);
+            PlayLists.Remove(playlist);
         }
 
-
+        public Playlist GetPlaylistByName(string name)
+        {
+            return PlayLists.FirstOrDefault(p => p.Name == name);
+        }
 
         public void AddMediaToPlaylist(Playlist playlist, MediaFile mediaFile)
         {
